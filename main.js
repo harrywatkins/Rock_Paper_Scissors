@@ -26,15 +26,15 @@ function checkWinner(move1, name1, move2, name2) {
     } else if (move1 === "rock") {
       console.log(name2 + "wins");
     } else {
-      console.log(name1 + "" + "move is invalid");
+      console.log(name1 + " " + "move is invalid");
     }
   } else if (move2 == "scissors") {
     if (move1 == "rock") {
-      console.log(name1 + "" + "wins");
+      console.log(name1 + " " + "wins");
     } else if (move1 === "paper") {
       console.log(name2 + "wins");
     } else {
-      console.log(name1 + "" + "move is invalid");
+      console.log(name1 + " " + "move is invalid");
     }
   } else {
     console.log(name2 + "move is invalid");
