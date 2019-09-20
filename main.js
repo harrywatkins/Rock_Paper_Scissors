@@ -9,30 +9,37 @@ function generateComputerMove() {
   }
 }
 
-function checkWinner(move1, name1, move2, name2) {
+function checkWinner(move1, name1, move2, name2, stats) {
   if (move1 == move2) {
     console.log("Result is a draw!");
+    console.log(stats);
   } else if (move2 == "rock") {
     if (move1 == "paper") {
       console.log(name1 + " " + "wins");
+      console.log(stats);
     } else if (move1 === "scissors") {
       console.log(name2 + "wins");
+      console.log(stats);
     } else {
       console.log(name1 + " " + "move is invalid");
     }
   } else if (move2 == "paper") {
     if (move1 == "scissors") {
       console.log(name1 + " " + "wins");
+      console.log(stats);
     } else if (move1 === "rock") {
       console.log(name2 + "wins");
+      console.log(stats);
     } else {
       console.log(name1 + " " + "move is invalid");
     }
   } else if (move2 == "scissors") {
     if (move1 == "rock") {
       console.log(name1 + " " + "wins");
+      console.log(stats);
     } else if (move1 === "paper") {
       console.log(name2 + "wins");
+      console.log(stats);
     } else {
       console.log(name1 + " " + "move is invalid");
     }
@@ -42,11 +49,23 @@ function checkWinner(move1, name1, move2, name2) {
 }
 
 var playerName;
+var computerMove;
 
 function playGame(playerMove) {
-  var computerMove = generateComputerMove();
+  computerMove = generateComputerMove();
   var computerName = "CPU ";
   var input = document.getElementById("name");
   playerName = input.value;
-  checkWinner(playerMove, playerName, computerMove, computerName);
+  var displayScore = displayInfo();
+
+  function displayInfo() {
+    cmove = computerMove;
+    pmove = playerMove;
+    return {
+      Player_move: pmove,
+      Computer_move: cmove
+    };
+  }
+
+  checkWinner(playerMove, playerName, computerMove, computerName, displayScore);
 }
