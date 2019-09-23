@@ -55,17 +55,25 @@ function playGame(playerMove) {
   computerMove = generateComputerMove();
   var computerName = "CPU ";
   var input = document.getElementById("name");
-  playerName = input.value;
-  var displayScore = displayInfo();
 
-  function displayInfo() {
-    cmove = computerMove;
-    pmove = playerMove;
-    return {
-      Player_move: pmove,
-      Computer_move: cmove
+  try {
+    if (input.value === "") {
+      throw new Error("No data has been entered in the name field");
+    }
+    playerName = input.value;
+    var displayScore = {
+      computerMove,
+      playerMove
     };
-  }
 
-  checkWinner(playerMove, playerName, computerMove, computerName, displayScore);
+    checkWinner(
+      playerMove,
+      playerName,
+      computerMove,
+      computerName,
+      displayScore
+    );
+  } catch (Ex) {
+    console.log(Ex);
+  }
 }
